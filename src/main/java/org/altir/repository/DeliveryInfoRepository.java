@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DeliveryInfoRepository extends JpaRepository<DeliveryInfo, Long> {
 
-    @Query("FROM DeliveryInfo di WHERE di.client.id = :clientId AND di.warehouse.id IN(:warehouseIds)")
+    @Query("FROM DeliveryInfo di WHERE di.client.id = :clientId AND di.warehouse.id IN(:warehouseIds) ORDER BY di.deliveryTime ASC")
     List<DeliveryInfo> findDeliveryInfosByClientIdAndWarehouseIdsIn(Long clientId, List<Long> warehouseIds);
 
 }

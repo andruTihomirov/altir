@@ -27,7 +27,7 @@ public class OrderMapper {
         ItemDto itemDto = mapItemToDto(item);
         WarehouseDto warehouseDto = mapWarehouseToDto(warehouse);
 
-        return buildOrderDto(itemDto, warehouseDto, deliveryInfo);
+        return buildOrderDto(order.getId(), itemDto, warehouseDto, deliveryInfo);
     }
 
     private ItemDto mapItemToDto(Item item) {
@@ -46,8 +46,9 @@ public class OrderMapper {
                 .build();
     }
 
-    private OrderDto buildOrderDto(ItemDto itemDto, WarehouseDto warehouseDto, DeliveryInfo deliveryInfo) {
+    private OrderDto buildOrderDto(Long orderId, ItemDto itemDto, WarehouseDto warehouseDto, DeliveryInfo deliveryInfo) {
         return OrderDto.builder()
+                .orderId(orderId)
                 .itemInfo(itemDto)
                 .warehouseInfo(warehouseDto)
                 .deliveryTime(deliveryInfo.getDeliveryTime())

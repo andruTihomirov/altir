@@ -9,6 +9,8 @@ import lombok.Setter;
 @Builder
 public class OrderDto {
 
+    private long orderId;
+
     private ItemDto itemInfo;
 
     private WarehouseDto warehouseInfo;
